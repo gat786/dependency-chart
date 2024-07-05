@@ -1,0 +1,6 @@
+dependencies:
+- name: child
+  repository: oci://asia-south1-docker.pkg.dev/curious-checking-stuff/helm-chart-repository
+  version: 0.2.0
+digest: sha256:a8a681e7e424c759e7433737758bbcfd6c30d6201f80da06da8571a00a4e326e
+generated: "2024-07-05T20:47:02.785697+05:30"

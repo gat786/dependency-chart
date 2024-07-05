@@ -1,0 +1,20 @@
+{{- if .Values.deployment -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "child.fullname" . }}
+  labels:
+    {{- include "child.labels" . | nindent 4 }}
+spec:
+  template:
+    spec:
+      serviceAccountName: {{ include "child.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+{{- end -}}
